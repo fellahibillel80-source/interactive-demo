@@ -10,7 +10,11 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   // Determine role based on URL for the demo purposes
-  const role = pathname?.includes("specialist") ? "specialist" : "worker";
+  const role = pathname?.includes("specialist") 
+    ? "specialist" 
+    : pathname?.includes("admin") 
+      ? "admin" 
+      : "worker";
 
   return (
     <div className="flex min-h-screen bg-background">

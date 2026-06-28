@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, CheckSquare, Bell, Settings, LogOut, Activity } from "lucide-react";
+import { LayoutDashboard, CheckSquare, Bell, Settings, LogOut, Activity, Users, Database } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface SidebarProps {
-  role: "worker" | "specialist";
+  role: "worker" | "specialist" | "admin";
 }
 
 export function Sidebar({ role }: SidebarProps) {
@@ -24,7 +24,15 @@ export function Sidebar({ role }: SidebarProps) {
     { name: "تنبؤات", href: "#", icon: Bell },
   ];
 
-  const links = role === "worker" ? workerLinks : specialistLinks;
+  const adminLinks = [
+    { name: "لوحة الإدارة", href: "/admin", icon: Settings },
+    { name: "المستخدمين", href: "#", icon: Users },
+    { name: "النظام", href: "#", icon: Database },
+  ];
+
+  const links = role === "worker" ? workerLinks : role === "specialist" ? specialistLinks : adminLinks;
+
+  const roleTitle = role === "worker" ? "لوحة العامل الميداني" : role === "specialist" ? "لوحة الأخصائي" : "لوحة الإدارة (Admin)";
 
   return (
     <>
@@ -35,7 +43,7 @@ export function Sidebar({ role }: SidebarProps) {
             DJAD Buddy
           </h2>
           <p className="text-xs text-muted-foreground mt-1">
-            {role === "worker" ? "لوحة العامل الميداني" : "لوحة الأخصائي"}
+            {roleTitle}
           </p>
         </div>
 
@@ -62,13 +70,15 @@ export function Sidebar({ role }: SidebarProps) {
         </nav>
 
         <div className="p-4 border-t border-border space-y-2">
-          <Link
-            href="#"
-            className="flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground"
-          >
-            <Settings className="w-5 h-5" />
-            الإعدادات
-          </Link>
+          {role !== "admin" && (
+            <Link
+              href="#"
+              className="flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-sm font-medium text-muted-foreground hover:bg-secondary hover:text-foreground"
+            >
+              <Settings className="w-5 h-5" />
+              الإعدادات
+            </Link>
+          )}
           <Link
             href="/"
             className="flex items-center gap-3 px-3 py-2 rounded-md transition-colors text-sm font-medium text-destructive hover:bg-destructive/10"
