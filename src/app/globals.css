@@ -1,38 +1,57 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #09090b;
+  --color-background: #1A1A2E;
   --color-foreground: #fafafa;
-  --color-card: #18181b;
-  --color-card-foreground: #fafafa;
-  --color-popover: #18181b;
-  --color-popover-foreground: #fafafa;
-  --color-primary: #3b82f6;
-  --color-primary-foreground: #ffffff;
-  --color-secondary: #27272a;
-  --color-secondary-foreground: #fafafa;
-  --color-muted: #27272a;
-  --color-muted-foreground: #a1a1aa;
-  --color-accent: #27272a;
-  --color-accent-foreground: #fafafa;
-  --color-destructive: #ef4444;
-  --color-destructive-foreground: #fafafa;
-  --color-border: #27272a;
-  --color-input: #27272a;
-  --color-ring: #3b82f6;
   
-  --radius-lg: 0.5rem;
-  --radius-md: calc(0.5rem - 2px);
-  --radius-sm: calc(0.5rem - 4px);
+  --color-card: #151525;
+  --color-card-foreground: #fafafa;
+  
+  --color-popover: #151525;
+  --color-popover-foreground: #fafafa;
+  
+  --color-primary: #0D3B66;
+  --color-primary-foreground: #ffffff;
+  
+  --color-secondary: #1A936F;
+  --color-secondary-foreground: #ffffff;
+  
+  --color-muted: #4A5568;
+  --color-muted-foreground: #a0aec0;
+  
+  --color-accent: #0D3B66;
+  --color-accent-foreground: #ffffff;
+  
+  --color-destructive: #E63946;
+  --color-destructive-foreground: #ffffff;
+
+  --color-border: #4A5568;
+  --color-input: #4A5568;
+  --color-ring: #1A936F;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  --font-kufi: var(--font-noto-kufi);
+  --font-roboto: var(--font-roboto-mono);
+  --font-inter: var(--font-inter);
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    @apply border-border;
   }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
-    direction: rtl; /* Right to left for Arabic */
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    direction: rtl;
+  }
+}
+
+@layer utilities {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }

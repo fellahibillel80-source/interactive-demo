@@ -1,17 +1,29 @@
 import type { Metadata } from "next";
-import { Tajawal } from "next/font/google";
+import { Noto_Kufi_Arabic, Roboto_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
-const tajawal = Tajawal({ 
+const notoKufi = Noto_Kufi_Arabic({ 
   subsets: ["arabic"],
-  weight: ["300", "400", "500", "700", "800", "900"],
-  variable: "--font-tajawal",
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-noto-kufi",
+});
+
+const robotoMono = Roboto_Mono({
+  subsets: ["latin"],
+  variable: "--font-roboto-mono",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
-  title: "Buddy System - Interactive Demo",
-  description: "Interactive demo for the Buddy System platform",
+  title: "Buddy System | تكنولوجيا الصحة النفسية المهنية",
+  description: "النموذج الأولي لتطبيق Buddy System للوقاية النفسية المهنية في البيئات البترولية المعزولة",
 };
+
+import { Navigation } from "@/components/Navigation";
 
 export default function RootLayout({
   children,
@@ -19,9 +31,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
-      <body className={`${tajawal.className} antialiased min-h-screen flex flex-col`}>
-        {children}
+    <html lang="ar" dir="rtl" className="dark">
+      <body
+        className={`${notoKufi.variable} ${robotoMono.variable} ${inter.variable} antialiased min-h-screen bg-background font-kufi text-foreground`}
+      >
+        <Navigation />
+        <main className="md:pr-64 pb-20 md:pb-0 min-h-screen">
+          {children}
+        </main>
       </body>
     </html>
   );
