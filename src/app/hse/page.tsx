@@ -148,7 +148,7 @@ export default function HSE() {
 
               <div className="bg-secondary/10 p-4 rounded-xl mt-4 border border-secondary/20">
                 <p className="text-[11px] text-secondary-foreground font-medium leading-relaxed italic text-center">
-                  "القانون 18-07 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي، مُطبق بصرامة."
+                  &quot;القانون 18-07 المتعلق بحماية الأشخاص الطبيعيين في مجال معالجة المعطيات ذات الطابع الشخصي، مُطبق بصرامة.&quot;
                 </p>
               </div>
             </div>

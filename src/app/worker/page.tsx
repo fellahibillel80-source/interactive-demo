@@ -161,7 +161,7 @@ export default function MobileAppSimulator() {
             </div>
           ) : (
             <div className="flex-1 flex items-center justify-center text-center">
-              <p className="text-black/60 text-sm font-medium">"اختر خطراً من القائمة العلوية أولاً"</p>
+              <p className="text-black/60 text-sm font-medium">&quot;اختر خطراً من القائمة العلوية أولاً&quot;</p>
             </div>
           )}
         </div>

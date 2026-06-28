@@ -50,21 +50,10 @@ export default function BprsCalculator() {
   const [distance, setDistance] = useState(700);
   const [support, setSupport] = useState(3);
 
-  const [bprs, setBprs] = useState(50);
-  
-  useEffect(() => {
-    // Risk factors (Total 45 max)
-    const risk = (isolation / 5 * 15) + (day / 28 * 20) + (distance / 1500 * 10);
-    // Protection factors (Total 55 max)
-    const protection = (empowerment / 5 * 25) + (resilience / 5 * 20) + (support / 5 * 10);
-    
-    // Final BPRS (0 to 100)
-    let score = Math.round(risk + (55 - protection));
-    
-    // Clamp between 0 and 100 just in case
-    score = Math.max(0, Math.min(100, score));
-    setBprs(score);
-  }, [empowerment, resilience, isolation, day, distance, support]);
+  const risk = (isolation / 5 * 15) + (day / 28 * 20) + (distance / 1500 * 10);
+  const protection = (empowerment / 5 * 25) + (resilience / 5 * 20) + (support / 5 * 10);
+  const rawScore = Math.round(risk + (55 - protection));
+  const bprs = Math.max(0, Math.min(100, rawScore));
 
   const reset = () => {
     setEmpowerment(3);

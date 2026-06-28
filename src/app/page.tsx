@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { Smartphone, FileText, Users, Activity, BarChart3, AlertTriangle } from "lucide-react";
+import { Smartphone, FileText, Users, BarChart3, AlertTriangle } from "lucide-react";
 
 export default function ExecutiveSummary() {
   return (
