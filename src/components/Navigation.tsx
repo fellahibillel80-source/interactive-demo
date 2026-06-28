@@ -2,16 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Calculator, Activity, ShieldAlert, Bot } from "lucide-react";
+import { Home, Calculator, Activity, ShieldAlert, Bot, Smartphone } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export function Navigation() {
   const pathname = usePathname();
 
+  // Hide navigation on the login page since it's meant to look like a full-screen mobile app
+  if (pathname === '/login') return null;
+
   const links = [
     { name: "الملخص التنفيذي", href: "/", icon: Home },
+    { name: "محاكي الموبايل", href: "/login", icon: Smartphone },
     { name: "حاسوب BPRS", href: "/bprs", icon: Calculator },
-    { name: "نبض العامل", href: "/worker", icon: Activity },
+    { name: "واجهة الميدان", href: "/worker", icon: Activity },
     { name: "لوحة HSE", href: "/hse", icon: ShieldAlert },
     { name: "مساعد اللجنة", href: "/assistant", icon: Bot },
   ];
