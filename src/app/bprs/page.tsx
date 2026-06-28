@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { RotateCcw, AlertCircle, Info } from "lucide-react";
+import { RotateCcw, AlertCircle, Info, Activity } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Helper function to get color and message based on BPRS score
