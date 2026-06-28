@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2, AlertTriangle, Clock, ShieldAlert } from "lucide-react";
+import { CheckCircle2, AlertTriangle, Clock, ShieldAlert, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -66,8 +66,8 @@ export default function WorkerDashboard() {
         </motion.div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <motion.div className="lg:col-span-2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
           <Card className="h-full border-border/50">
             <CardHeader>
               <CardTitle>قائمة المهام الميدانية</CardTitle>
@@ -99,32 +99,69 @@ export default function WorkerDashboard() {
           </Card>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
-          <Card className="h-full border-border/50">
-            <CardHeader>
-              <CardTitle>أحدث الإشعارات</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {alerts.map(alert => (
-                <div key={alert.id} className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50 border border-border/50">
-                  <div className={`p-2 rounded-full ${
-                    alert.type === 'error' ? 'bg-destructive/20 text-destructive' :
-                    alert.type === 'warning' ? 'bg-amber-500/20 text-amber-500' :
-                    'bg-emerald-500/20 text-emerald-500'
-                  }`}>
-                    {alert.type === 'error' ? <AlertTriangle className="w-5 h-5" /> : 
-                     alert.type === 'warning' ? <AlertTriangle className="w-5 h-5" /> : 
-                     <CheckCircle2 className="w-5 h-5" />}
+        <div className="space-y-8">
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
+            <Card className="border-border/50 bg-card/60 backdrop-blur">
+              <CardHeader className="bg-primary/5 border-b border-border/50 pb-4">
+                <CardTitle className="flex items-center gap-2">
+                  <Users className="w-5 h-5 text-primary" />
+                  نظام الرفيق (Buddy System)
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-500 flex items-center justify-center font-bold text-xl">
+                    ي
                   </div>
-                  <div className="flex-1">
-                    <p className="font-medium text-sm leading-relaxed">{alert.message}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{alert.time}</p>
+                  <div>
+                    <h4 className="font-bold">ياسر علي</h4>
+                    <p className="text-sm text-muted-foreground">الرفيق الميداني المخصص</p>
                   </div>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
-        </motion.div>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="p-2 rounded bg-secondary/50 border border-border/50 text-center">
+                    <span className="block text-muted-foreground mb-1">الحالة</span>
+                    <span className="text-emerald-500 font-bold">آمن</span>
+                  </div>
+                  <div className="p-2 rounded bg-secondary/50 border border-border/50 text-center">
+                    <span className="block text-muted-foreground mb-1">المسافة</span>
+                    <span className="font-bold">45 متر</span>
+                  </div>
+                </div>
+                <Button className="w-full mt-4" variant="outline">
+                  طلب اتصال بالرفيق
+                </Button>
+              </CardContent>
+            </Card>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
+            <Card className="h-full border-border/50">
+              <CardHeader>
+                <CardTitle>أحدث الإشعارات</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                {alerts.map(alert => (
+                  <div key={alert.id} className="flex items-start gap-4 p-4 rounded-lg bg-secondary/50 border border-border/50">
+                    <div className={`p-2 rounded-full ${
+                      alert.type === 'error' ? 'bg-destructive/20 text-destructive' :
+                      alert.type === 'warning' ? 'bg-amber-500/20 text-amber-500' :
+                      'bg-emerald-500/20 text-emerald-500'
+                    }`}>
+                      {alert.type === 'error' ? <AlertTriangle className="w-5 h-5" /> : 
+                       alert.type === 'warning' ? <AlertTriangle className="w-5 h-5" /> : 
+                       <CheckCircle2 className="w-5 h-5" />}
+                    </div>
+                    <div className="flex-1">
+                      <p className="font-medium text-sm leading-relaxed">{alert.message}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{alert.time}</p>
+                    </div>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

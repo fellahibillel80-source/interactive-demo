@@ -9,8 +9,8 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "DJAD Buddy - Interactive Demo",
-  description: "Interactive demo for the DJAD Buddy platform",
+  title: "Buddy System - Interactive Demo",
+  description: "Interactive demo for the Buddy System platform",
 };
 
 export default function RootLayout({

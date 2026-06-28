@@ -40,7 +40,7 @@ export function Sidebar({ role }: SidebarProps) {
       <aside className="hidden md:flex w-64 border-l border-border bg-card/50 backdrop-blur-md flex-col h-screen fixed right-0 top-0 z-40">
         <div className="p-6">
           <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
-            DJAD Buddy
+            Buddy System
           </h2>
           <p className="text-xs text-muted-foreground mt-1">
             {roleTitle}
